@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competidores Inscritos</title>
+    <style>
+        :root {
+            --sena-green: #39A900;
+            --sena-blue: #00324D;
+            --ios-bg: #F2F2F7;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--ios-bg);
+            color: #1C1C1E;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--sena-blue);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .add-btn {
+            background-color: var(--sena-green);
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .add-btn:active {
+            transform: scale(0.95);
+        }
+
+        .list-group {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .list-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid #E5E5EA;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 2px;
+        }
+
+        .item-info p {
+            font-size: 13px;
+            color: #8E8E93;
+        }
+
+        .badge-cat {
+            background-color: rgba(0, 50, 77, 0.08);
+            color: var(--sena-blue);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .empty-state {
+            padding: 40px 20px;
+            text-align: center;
+            color: #8E8E93;
+            font-size: 15px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 24px;
+            color: var(--sena-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Competidores</h1>
+            <a href="/senasoft/registro/" class="add-btn">+ Nuevo</a>
+        </div>
+
+        <div class="list-group">
+            {% for competidor in competidores %}
+                <div class="list-item">
+                    <div class="item-info">
+                        <h2>{{ competidor.nombre }}</h2>
+                        <p>{{ competidor.centro }}</p>
+                    </div>
+                    <span class="badge-cat">{{ competidor.categoria }}</span>
+                </div>
+            {% empty %}
+                <div class="empty-state">
+                    No hay competidores registrados aún.
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="/senasoft/" class="back-link">← Volver al Inicio</a>
+    </div>
+</body>
+</html>

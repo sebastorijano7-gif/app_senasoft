@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Competidor</title>
+    <style>
+        :root {
+            --sena-green: #39A900;
+            --sena-blue: #00324D;
+            --ios-bg: #F2F2F7;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--ios-bg);
+            color: #1C1C1E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px;
+            padding: 30px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sena-logo {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--sena-blue);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6C6C70;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #F2F2F7;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #1C1C1E;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            background-color: #FFFFFF;
+            border-color: var(--sena-green);
+            box-shadow: 0 0 0 3px rgba(57, 169, 0, 0.15);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--sena-green);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            box-shadow: 0 4px 12px rgba(57, 169, 0, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.97);
+            background-color: #319300;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--sena-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header-box">
+            <img src="https://89f62f524c.cbaul-cdnwnd.com/657150a0c2d22ca798a9f97ab43c6b49/200000026-ba900ba902/logo-sena-verde-png-sin-fondo.png?ph=89f62f524c" alt="Logo SENA" class="sena-logo">
+            <h1>Inscripción Senasoft</h1>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nombre">Nombre del Competidor</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+            <div class="form-group">
+                <label for="centro">Centro de Formación</label>
+                <input type="text" id="centro" name="centro" placeholder="Ej. CDTI" required>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <input type="text" id="categoria" name="categoria" placeholder="Ej. Desarrollo Web" required>
+            </div>
+            <button type="submit">Guardar Competidor</button>
+        </form>
+        <a href="/senasoft/" class="back-link">← Cancelar y volver</a>
+    </div>
+</body>
+</html>
